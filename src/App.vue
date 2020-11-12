@@ -1,32 +1,63 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <navigation />
+
+    <v-main>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+    <v-footer color="indigo" app>
+      <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
 </template>
 
+<script>
+import Navigation from "@/components/Navigation.vue";
+
+export default {
+  components: {
+    Navigation,
+  },
+  props: {
+    source: String,
+  },
+  data: () => ({
+    drawer: null,
+  }),
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body  {
+  background-image: url("./assets/noctis.jpg");
+  background-size: cover;
+}
+main {
+  background-image: url("./assets/noctis.jpg");
+  background-size: cover;
 }
 
-#nav {
-  padding: 30px;
+.col h1 {
+  @include infobox_mixin(
+    5px,
+    map-get($colorz, white),
+    10px,
+    5px,
+    map-get($colorz, white)
+  );
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: right;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.col:last-child h1 {
+  text-align: left;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#info {
+  background-color: white;
 }
 </style>
