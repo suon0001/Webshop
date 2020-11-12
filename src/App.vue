@@ -30,6 +30,10 @@ export default {
 </script>
 
 <style lang="scss">
+body  {
+  background-image: url("./assets/noctis.jpg");
+  background-size: cover;
+}
 main {
   background-image: url("./assets/noctis.jpg");
   background-size: cover;
